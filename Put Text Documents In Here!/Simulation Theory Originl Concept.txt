@@ -1,0 +1,58 @@
+1.	You realize you are in an actual simulation: you are the only actual being.  Everyone else is game created content.  What would you do? How would you react?  
+	a.	You wake up and a supposedly inanimate object talks to you? (Eg: a tree)
+	b.	The tree reveals that you are actually in a simulation.  The tree is your guide, it isn’t meant to talk to you, but has decided to help you.
+	c.	Goal is to get out of the simulation.
+	d.	He has only been in the simulation for a short amount of time(eg 1 week).  But he feels he has lived a life of 30 years in there.
+	e.	Open world in the sense there are a multiple storylines which allow you to do things .
+	f.	Main story line is where the tree gives you tasks that will combine to allow you to escape the simulation that you are trapped in.
+
+2.	Details:
+	a.	Tasks will be relatively simple and linear.
+	b.	The beginning and the end will be the most important parts.  The middle will just be simple yet quirky tasks to allow you to get to the end.
+	c.	The reason you are doing the tasks, is so you can change the code in the simulation to give yourself abilities.
+	d.	Yet acquire an ability to change gravity so you can jump higher for tasks.  Example task: Jump up a stairway of floating blocks and roll a sphere off so that it hits a target, to acquire another ability.
+
+3.	Platform : PC
+
+
+Gameplay: 
+	•	Tree gives you roughly 5 tasks
+	•	There are roughly half a dozen other npcs that can give you one or two tasks.
+
+
+Main story:
+	•	Fetch an object that you return to the tree, which gives the tree the ability to change the code to help you.
+	•	Search for scripts that combined will give you the ability to temporarily change gravity in the simulation.
+	•	Use the ability to change gravity to jump up a series of blocks that are in the sky.  On the top block is a sphere(Respawning) which you have to push off so it hits a bullseye target, dead on.
+	•	Maze with moving objects, you use the slowed down time to slow down the moving objects to navigate through them.
+	•	Blocked cave, which you use the destruction ability to enter.
+
+
+Scripts:
+•	Dialogue.
+•	Interaction.
+•	Movement.
+•	Each ability will need its own script; abilities include: altered gravity/super jump.  Slowed down time.  Destructive ability. (Toggles within interaction/movement scripts).
+•	Maze w/ moving objects.
+
+
+Texture:
+•	Mountain
+•	Waterways
+•	Forrest – with pathways
+•	House – where the player wakes up.
+
+
+NPCS:
+•	Only tree, every other object acts like it is a real world object.  (But you can over hear every now and then inanimate objects talking.)  May be difficult as it will have be text based.
+
+
+Delegation:
+•	Movement script – what we have now
+•	Interaction script – what we have no w/ minor mods.
+•	Dialogue – mod what we have now.
+•	
+
+We all need to do ui and script stuff.
+
+ENDING: You wake up in another world and start walking around.  A tree talks to you again.
