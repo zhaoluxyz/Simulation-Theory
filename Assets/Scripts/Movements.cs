@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//CREATED BY JOSH
+
+using UnityEngine;
 using System.Collections;
 
 public class Movements : MonoBehaviour {
@@ -17,6 +19,8 @@ public class Movements : MonoBehaviour {
 		controller = this.gameObject.GetComponent <CharacterController>();
 
 		speed = baseSpeed;
+
+        Cursor.visible = false;
 	}
 
 	void Update () {

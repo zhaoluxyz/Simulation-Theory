@@ -1,0 +1,57 @@
+The following rules are there as proof to the teacher as to who has done what.
+
+
+If you create a script put a comment on the very top to clearly state who was the original creator.
+
+If a line doesn't have a name next to it that means it was created by whoever created the script.
+
+If you aren't the creator of the script but create a method and list that you created that method, all blank lines in that is assumed to be done by the creator of the method
+
+If you are making changes to already existing code then you must include the names of all people that made changed. If it's blank then add the name of the person determined by the above two rules.
+
+
+
+
+
+EXAMPLE:
+
+
+//CREATED BY JOSH
+
+using UnityEngine;
+using System.Collections;
+
+public class Example : MonoBehaviour{
+	
+	void Start()
+	{
+		DoShit();		//Jared
+		DoMoreShit();		//Jack
+		DoEvenMoreShit()
+	}	
+
+	public void DoShit()		//Jared
+	{
+		//line1			
+		//line2			//Jack Jared
+		//line3			//Jack Josh
+		//line4
+			
+	}
+
+	public void DoMoreShit()	//Jack
+	{
+		//line1			//Josh
+		//line2			//Jared
+		//line3			
+		//line4
+	}
+
+	public void DoEvenMoreShit()
+	{
+		//line1			//Jared
+		//line2			
+		//line3			//Jack Josh Jared
+		//line4
+	}
+}

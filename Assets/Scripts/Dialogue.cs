@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//CREATED BY JOSH
+
+using UnityEngine;
 using System.Collections;
 
 public class Dialogue : MonoBehaviour 

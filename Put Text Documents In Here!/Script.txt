@@ -2,15 +2,90 @@ SCRIPT
 
 FORMATING:
 
+*DESCRIBE WHAT'S HAPPENING*
+
 PLAYER: PLACEHOLDER TEXT
 TREE: PLACEHOLDER TEXT
 PLAYER:
 	OPTION A: PLACEHOLDER TEXT
+		PLAYER: PLACEHOLDER TEXT
+		TREE: PLACEHOLDER TEXT
 	OPTION B: PLACEHOLDER TEXT
+		PLAYER: PLACEHOLDER TEXT
+		TREE: PLACEHOLDER TEXT
+PLAYER: PLACEHOLDER TEXT
+TREE: PLACEHOLDER TEXT
 
 
+*DESCRIBE WHAT'S HAPPENING*
 
 
 
 BEGINNING:
+
+
+*Player walks out of the house*
+
+
+(TREE):	Hey, you over there.
+PLAYER:	Huh? who said that?
+(TREE): I'm over here.
+PLAYER: Where?
+(TREE): I'm right in front of you.
+PLAYER: The tree?
+TREE: 	Yes. Come over here so we aren't yelling at each other
+
+
+*Player walks to the tree and interacts with it*
+
+
+PLAYER: How are you able to speek to me?
+TREE:	This isn't real life.
+PLAYER:	Huh? What do you mean?
+TREE:	I can give you the short version or the long version.
+PLAYER:
+	OPTION A: Short version
+		TREE: 	Scientists are doing experiments on you and your brain is connected to a simulation.
+		PLAYER: WHAT?! How long have I been here for?
+		TREE: 	Only a day.
+		PLAYER: But it's felt like it's been years?
+		TREE: 	That's because the computer is able to process a reality faster than reality itself.
+		TREE: 	One of their programmers have programmed me in to try help you escape.
+	OPTION B: Long version
+		TREE: 	You were kidnapped by a group of scientists who are doing experiments on you.
+		TREE: 	They put you to sleep and inserted a chip into your brain which is connected to this simulation.
+		TREE: 	They are monitoring how your brain reacts to living in a virtual world
+		PLAYER: WHAT?! How long have I been here for?
+		TREE: 	Only a day.
+		PLAYER: But it's felt like it's been years?
+		TREE: 	The reason I'm able to talk to you is because one of their programmers believes what they are doing is wrong and wants to help you without them knowing he is helping
+		TREE: 	So he programmed the ability for me to help you.
+PLAYER: So how are you going to help me?
+TREE: 	There's an object not to far away from here that can give me the ability to change the simulation code.
+TREE: 	But since I'm only a tree I'm unable to go get them.
+PLAYER: So where is this object?
+TREE: 	If you follow the path to the left you come across (SOMETHING) and it will be there.
+PLAYER: What does it look like?
+TREE:	I'm not sure but look for something that looks out of place.
+PLAYER: I'll be right back.
+
+
+RETRIEVING THE FIRST OBJECT
+
+
+*Player follows the path*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
