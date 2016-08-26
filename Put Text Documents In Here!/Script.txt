@@ -46,25 +46,26 @@ TREE:	I can give you the short version or the long version.
 PLAYER:
 	OPTION A: Short version
 		TREE: 	Scientists are doing experiments on you and your brain is connected to a simulation.
-		PLAYER: WHAT?! How long have I been here for?
+		PLAYER: WHAT?! HOW LONG HAVE I BEEN HERE FOR?!
 		TREE: 	Only a day.
-		PLAYER: But it's felt like it's been years?
+		PLAYER: WHAT?! ONLY A DAY?! IT'S FELT LIKE YEARS!
 		TREE: 	That's because the computer is able to process a reality faster than reality itself.
-		TREE: 	One of their programmers have programmed me in to try help you escape.
+		TREE: 	One of their programmers have programmed me to help you escape.
 	OPTION B: Long version
 		TREE: 	You were kidnapped by a group of scientists who are doing experiments on you.
 		TREE: 	They put you to sleep and inserted a chip into your brain which is connected to this simulation.
 		TREE: 	They are monitoring how your brain reacts to living in a virtual world
-		PLAYER: WHAT?! How long have I been here for?
+		PLAYER: WHAT?! HOW LONG HAVE I BEEN HERE FOR?!
 		TREE: 	Only a day.
-		PLAYER: But it's felt like it's been years?
+		PLAYER: WHAT?! ONLY A DAY?! IT'S FELT LIKE YEARS!
+		TREE: 	That's because the computer is able to process a reality faster than reality itself.
 		TREE: 	The reason I'm able to talk to you is because one of their programmers believes what they are doing is wrong and wants to help you without them knowing he is helping
-		TREE: 	So he programmed the ability for me to help you.
+		TREE: 	So he programmed me to help you.
 PLAYER: So how are you going to help me?
 TREE: 	There's an object not to far away from here that can give me the ability to change the simulation code.
 TREE: 	But since I'm only a tree I'm unable to go get them.
 PLAYER: So where is this object?
-TREE: 	If you follow the path to the left you come across (SOMETHING) and it will be there.
+TREE: 	If you follow the path to the left you come across (UNDECIDED LOCATION) and it will be there.
 PLAYER: What does it look like?
 TREE:	I'm not sure but look for something that looks out of place.
 PLAYER: I'll be right back.
