@@ -7,7 +7,7 @@ public class Interact : MonoBehaviour {
 
     public bool isInteracting;
     public bool isHovering;
-    string guiText;
+    string hoverText;
 
 	// Use this for initialization
 	void Start () {
@@ -44,12 +44,12 @@ public class Interact : MonoBehaviour {
         {
             if (castHitHover.collider.CompareTag("Door"))
             {
-                guiText = "Press E to Open Door";
+                hoverText = "Press E to Open Door";
                 isHovering = true;
             }
             else if (castHitHover.collider.CompareTag("NPC"))
             {
-                guiText = "Press E to Speak";
+                hoverText = "Press E to Speak";
                 isHovering = true;
             }
         }
@@ -67,8 +67,9 @@ public class Interact : MonoBehaviour {
             labelStyle.fontSize = (20);
             labelStyle.normal.textColor = Color.white;
             labelStyle.alignment = TextAnchor.MiddleCenter;
+            labelStyle.wordWrap = true;
 
-            GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 25, 100, 50), guiText,labelStyle);
+            GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 25, 100, 50), hoverText, labelStyle);
         }
     }
 

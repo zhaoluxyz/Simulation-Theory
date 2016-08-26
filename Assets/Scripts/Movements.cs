@@ -11,8 +11,11 @@ public class Movements : MonoBehaviour {
 
 	public float jumpSpeed = 8;
 	public float gravity = 20;
+
 	private Vector3 moveDirection = Vector3.zero;
 	public CharacterController controller;
+
+    public bool allowMovement = true;
 
 	void Start()
 	{
@@ -21,7 +24,11 @@ public class Movements : MonoBehaviour {
 		speed = baseSpeed;
 	}
 
-	void Update () {
+	void Update ()
+    {
+        if (!allowMovement)
+            return;
+
 		if (controller.isGrounded) 
 		{
 			if (Input.GetKey(KeyCode.LeftShift)) 
@@ -35,13 +42,17 @@ public class Movements : MonoBehaviour {
 
 			moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
 			moveDirection = transform.TransformDirection (moveDirection);
-			moveDirection *= speed;
+            moveDirection *= speed;
 
-			if (Input.GetKeyDown(KeyCode.Space)) 
+            if (Input.GetKeyDown(KeyCode.Space)) 
 			{
-				moveDirection.y = jumpSpeed;
+                moveDirection /= speed;
+                moveDirection *= speed / 1.25f;
+                moveDirection.y = jumpSpeed;
 			}
-		}
+
+            
+        }
 
 		moveDirection.y -= gravity * Time.deltaTime;
 		controller.Move (moveDirection * Time.deltaTime);

@@ -5,24 +5,20 @@ using System.Collections;
 
 public class StartGameFrontDoor : MonoBehaviour {
 
-    bool hasBeenTriggered;
+    Game gameProgression;
+    DialogueScript dialogueScript;
 
-    string[] dialogue =
+    void Start()
     {
-        "Hey, you over there.",
-        "Player: Huh? who said that?",
-        "I'm over here.",
-        "Player: Where?",
-        "I'm right in front of you.",
-        "Player: The tree?",
-        "Tree: Yes, come closer so we aren't yelling at each other."
-    };
+        gameProgression = GameObject.Find("Game").GetComponent<Game>();
+        dialogueScript = GameObject.Find("Game").GetComponent<DialogueScript>();
+    }
 
     void OnTriggerEnter(Collider collider)
     {
-        if (!hasBeenTriggered)
+        if (gameProgression.gameProgression == 0)
         {
-
+            dialogueScript.showDialogue = true;
         }
     }
 }
