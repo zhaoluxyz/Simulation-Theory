@@ -5,43 +5,71 @@ using System.Collections;
 
 public class Interact : MonoBehaviour {
 
-	public MouseLook player,cam;
+    public bool isInteracting;
+    public bool isHovering;
+    string guiText;
 
-	void Start()
-	{
-		player = GameObject.FindGameObjectWithTag ("Player").GetComponent<MouseLook>();
-		cam = GetComponent<MouseLook>();
+	// Use this for initialization
+	void Start () {
+	
 	}
+	
+	// Update is called once per frame
+	void Update ()
+    {
+        if (isInteracting)
+            return;
 
-	void Update () 
-	{
-		if (Input.GetKeyDown(KeyCode.E))
-		{
-			Ray interact;
-			interact = Camera.main.ScreenPointToRay (new Vector2 (Screen.width / 2, Screen.height / 2));
-			RaycastHit hitInfo;
-			if (Physics.Raycast (interact, out hitInfo, 20)) 
-			{
-				if (hitInfo.collider.CompareTag ("NPC")) 
-				{
-					Dialogue dlg = hitInfo.transform.GetComponent<Dialogue> ();
-					if (dlg != null) 
-					{
-						dlg.showDlg = true;
-						player.enabled = false;
-						cam.enabled = false;
-						Cursor.visible = true;
-						Cursor.lockState = CursorLockMode.None;
-					}
-				}
-                else if (hitInfo.collider.CompareTag("Door"))
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Ray rayInteract = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+            RaycastHit castHit;
+
+            if (Physics.Raycast(rayInteract, out castHit, 20))
+            {
+                if (castHit.collider.CompareTag("Door"))
                 {
-                    Door doorMove = hitInfo.transform.GetComponent<Door>();
+                    Door doorMove = castHit.transform.GetComponent<Door>();
                     doorMove.moving = true;
                     doorMove.open = !doorMove.open;
-                    Debug.Log("Door Interact");
                 }
-			}
-		}
-	}
+            }
+        }
+
+
+        Ray rayInteractHover = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+        RaycastHit castHitHover;
+
+        if (Physics.Raycast(rayInteractHover,out castHitHover, 20))
+        {
+            if (castHitHover.collider.CompareTag("Door"))
+            {
+                guiText = "Press E to Open Door";
+                isHovering = true;
+            }
+            else if (castHitHover.collider.CompareTag("NPC"))
+            {
+                guiText = "Press E to Speak";
+                isHovering = true;
+            }
+        }
+        else
+        {
+            isHovering = false;
+        }
+    }
+
+    void OnGUI()
+    {
+        if (isHovering)
+        {
+            GUIStyle labelStyle = new GUIStyle();
+            labelStyle.fontSize = (20);
+            labelStyle.normal.textColor = Color.white;
+            labelStyle.alignment = TextAnchor.MiddleCenter;
+
+            GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 25, 100, 50), guiText,labelStyle);
+        }
+    }
+
 }

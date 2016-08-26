@@ -19,8 +19,6 @@ public class Movements : MonoBehaviour {
 		controller = this.gameObject.GetComponent <CharacterController>();
 
 		speed = baseSpeed;
-
-        Cursor.visible = false;
 	}
 
 	void Update () {
