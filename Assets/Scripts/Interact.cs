@@ -9,17 +9,13 @@ public class Interact : MonoBehaviour {
     public bool isHovering;
     string hoverText;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
 	void Update ()
     {
+        //if you are currently interacting then disable the ability to interact
         if (isInteracting)
             return;
 
+        //raycast when E is pressed
         if (Input.GetKeyDown(KeyCode.E))
         {
             Ray rayInteract = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
@@ -27,6 +23,7 @@ public class Interact : MonoBehaviour {
 
             if (Physics.Raycast(rayInteract, out castHit, 20))
             {
+                //interact with door then open door
                 if (castHit.collider.CompareTag("Door"))
                 {
                     Door doorMove = castHit.transform.GetComponent<Door>();
@@ -36,6 +33,7 @@ public class Interact : MonoBehaviour {
             }
         }
 
+        //raycast to view kind of interaction
 
         Ray rayInteractHover = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         RaycastHit castHitHover;
@@ -61,6 +59,7 @@ public class Interact : MonoBehaviour {
 
     void OnGUI()
     {
+        //if the raycast is hovering over a object then display the corresponding text
         if (isHovering)
         {
             GUIStyle labelStyle = new GUIStyle();

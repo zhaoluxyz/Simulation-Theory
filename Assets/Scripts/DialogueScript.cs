@@ -13,6 +13,7 @@ public class DialogueScript : MonoBehaviour
     int dialogueIndex;
     float scrW = Screen.width / 16, scrH = Screen.height / 9;
 
+    #region dialogue0
     string [] dialogue0 = 
     {
         "Hey! you over there!",
@@ -23,6 +24,7 @@ public class DialogueScript : MonoBehaviour
         "Player: The tree?!",
         "Tree: Yes! come closer so we aren't yelling at each other!"
     };
+    #endregion
 
     void Start () {
         game = GetComponent<Game>();
@@ -35,8 +37,10 @@ public class DialogueScript : MonoBehaviour
 	
 	void OnGUI()
     {
+        //show dialogue
         if (showDialogue)
         {
+            //disable movement and enable cursor
             player.enabled = false;
             cam.enabled = false;
             Cursor.visible = true;
@@ -46,6 +50,7 @@ public class DialogueScript : MonoBehaviour
             #region DIALOGUE 0
             if (game.gameProgression == 0 && game.dialogueProgression == 0)
             {
+                //if there is no more dialogure then progress through game
                 if (dialogueIndex == allDialogue[game.dialogueProgression].Length)
                 {
                     game.gameProgression++;
@@ -54,6 +59,7 @@ public class DialogueScript : MonoBehaviour
                 }
                 else
                 {
+                    //display the dialogure and increment the index
                     GUI.Box(new Rect(0, (Screen.height / 2) - (1.5f * scrH), Screen.width, 3 * scrH), allDialogue[game.dialogueProgression][dialogueIndex]);
 
                     if (GUI.Button(new Rect(15 * scrW, 5 * scrH, scrW, 0.5f * scrH), "Next"))
@@ -65,6 +71,7 @@ public class DialogueScript : MonoBehaviour
             #endregion
             else
             {
+                //when dialogue is complete enable movement and disable cursor
                 player.enabled = true;
                 cam.enabled = true;
                 Cursor.visible = false;

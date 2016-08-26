@@ -26,9 +26,11 @@ public class Movements : MonoBehaviour {
 
 	void Update ()
     {
+        //disables movement
         if (!allowMovement)
             return;
 
+        //player movement vector
 		if (controller.isGrounded) 
 		{
 			if (Input.GetKey(KeyCode.LeftShift)) 
@@ -44,6 +46,7 @@ public class Movements : MonoBehaviour {
 			moveDirection = transform.TransformDirection (moveDirection);
             moveDirection *= speed;
 
+            //space bar press jumps and reduces the speed
             if (Input.GetKeyDown(KeyCode.Space)) 
 			{
                 moveDirection /= speed;
@@ -54,6 +57,7 @@ public class Movements : MonoBehaviour {
             
         }
 
+        //applying gravity and moving the character
 		moveDirection.y -= gravity * Time.deltaTime;
 		controller.Move (moveDirection * Time.deltaTime);
 	}
