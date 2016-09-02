@@ -11,10 +11,6 @@ public class Interact : MonoBehaviour {
 
 	void Update ()
     {
-        //if you are currently interacting then disable the ability to interact
-        if (isInteracting)
-            return;
-
         //raycast when E is pressed
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -29,6 +25,7 @@ public class Interact : MonoBehaviour {
                     Door doorMove = castHit.transform.GetComponent<Door>();
                     doorMove.moving = true;
                     doorMove.open = !doorMove.open;
+					doorMove.PlaySound ();
                 }
             }
         }
@@ -50,15 +47,24 @@ public class Interact : MonoBehaviour {
                 hoverText = "Press E to Speak";
                 isHovering = true;
             }
+            else
+            {
+                isHovering = false;
+            }
         }
         else
         {
             isHovering = false;
         }
+
     }
 
     void OnGUI()
     {
+        //if you are currently interacting then disable the ability to interact
+        if (isInteracting)
+            return;
+
         //if the raycast is hovering over a object then display the corresponding text
         if (isHovering)
         {
