@@ -8,6 +8,7 @@ public class DialogueScript : MonoBehaviour
     List<string[]> allDialogue = new List<string[]>();
     MouseLook player, cam;
     Movements movement;
+    Interact interact;
 
     public bool showDialogue;
     int dialogueIndex;
@@ -28,9 +29,11 @@ public class DialogueScript : MonoBehaviour
 
     void Start () {
         game = GetComponent<Game>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<MouseLook>();
+        player = GameObject.Find("Player").GetComponent<MouseLook>();
         cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<MouseLook>();
-        movement = GameObject.FindGameObjectWithTag("Player").GetComponent<Movements>();
+        movement = GameObject.Find("Player").GetComponent<Movements>();
+        interact= GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Interact>();
+
 
         allDialogue.Add(dialogue0);	
 	}
@@ -46,6 +49,7 @@ public class DialogueScript : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             movement.allowMovement = false;
+            interact.isInteracting = true;
             
             #region DIALOGUE 0
             if (game.gameProgression == 0 && game.dialogueProgression == 0)
@@ -78,6 +82,7 @@ public class DialogueScript : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 showDialogue = false;
                 movement.allowMovement = true;
+                interact.isInteracting = false;
             }
         }
     }
