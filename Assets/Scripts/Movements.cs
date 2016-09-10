@@ -17,11 +17,15 @@ public class Movements : MonoBehaviour {
 
     public bool allowMovement = true;
 
+    AudioSource walkingSound;
+
 	void Start()
 	{
 		controller = this.gameObject.GetComponent <CharacterController>();
 
 		speed = baseSpeed;
+
+        walkingSound = this.gameObject.GetComponent<AudioSource>();
 	}
 
 	void Update ()
@@ -36,11 +40,18 @@ public class Movements : MonoBehaviour {
 			if (Input.GetKey(KeyCode.LeftShift)) 
 			{
 				speed = sprintSpeed;
-			} 
+                walkingSound.clip = Resources.Load("Foot Running") as AudioClip;
+            } 
 			else 
 			{
 				speed = baseSpeed;
+                walkingSound.clip = Resources.Load("Foot Walking") as AudioClip;
 			}
+
+            if (!walkingSound.isPlaying && (Input.GetAxis("Horizontal") > 0 || (Input.GetAxis("Vertical") > 0)))
+            {
+                walkingSound.Play();
+            }
 
 			moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
 			moveDirection = transform.TransformDirection (moveDirection);
