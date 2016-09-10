@@ -7,6 +7,8 @@ public class Interact : MonoBehaviour {
     public bool isInteracting, isHovering, invalidProgression;
     string hoverText;
 
+    float scrW = Screen.width / 16, scrH = Screen.height / 9;
+
     DateTime timedisplay;
 
     Game gameProgression;
@@ -20,6 +22,9 @@ public class Interact : MonoBehaviour {
 
     void Update ()
     {
+        scrW = Screen.width / 16;
+        scrH = Screen.height / 9;
+
         //raycast when E is pressed
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -89,7 +94,7 @@ public class Interact : MonoBehaviour {
     {
         //style for displayed text
         GUIStyle labelStyle = new GUIStyle();
-        labelStyle.fontSize = 20;
+        labelStyle.fontSize = (int)(scrW/2.5);
         labelStyle.normal.textColor = Color.white;
         labelStyle.alignment = TextAnchor.MiddleCenter;
         labelStyle.wordWrap = true;
@@ -99,7 +104,7 @@ public class Interact : MonoBehaviour {
         {
             if (timedisplay > DateTime.Now)
             {
-                labelStyle.fontSize = 30;
+                labelStyle.fontSize = (int)(scrW/2);
                 GUI.Label(new Rect(Screen.width / 2 - 200, Screen.height / 2 - 100, 400, 200), hoverText, labelStyle);
             }
             else

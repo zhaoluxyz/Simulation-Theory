@@ -93,7 +93,7 @@ public class DialogueScript : MonoBehaviour
 	void OnGUI()
     {
         dialogueStyle = new GUIStyle(GUI.skin.box);
-        dialogueStyle.fontSize = 20;
+        dialogueStyle.fontSize = (int)(scrW/2.5);
         dialogueStyle.normal.textColor = Color.white;
         dialogueStyle.hover.textColor = Color.white;
         dialogueStyle.alignment = TextAnchor.MiddleCenter;
@@ -170,18 +170,19 @@ public class DialogueScript : MonoBehaviour
                     if(dialogueIndex == 3)
                     {
                         multipleOptions = true;
-                        if (GUI.Button(new Rect(11.7f * scrW, 5 * scrH, 2f*scrW, 0.5f * scrH), "Short Version"))
+                        if (GUI.Button(new Rect(13.6f * scrW, 4.4f * scrH, 2.3f*scrW, 0.5f * scrH), "1. Short Version") || Input.GetKeyDown(KeyCode.Alpha1))
                         {
                             dialogueIndex++;
+                            multipleOptions = false;
                         }
-                        if (GUI.Button(new Rect(13.9f* scrW, 5 * scrH, 2f*scrW, 0.5f * scrH), "Long Version"))
+                        if (GUI.Button(new Rect(13.6f* scrW, 5 * scrH, 2.3f*scrW, 0.5f * scrH), "2. Long Version") || Input.GetKeyDown(KeyCode.Alpha2))
                         {
                             dialogueIndex = 10;
+                            multipleOptions = false;
                         }
                     }
                     else if(GUI.Button(new Rect(14.8f * scrW, 5 * scrH, scrW, 0.5f * scrH), "Next"))
                     {
-                        multipleOptions = false;
                         dialogueIndex++;
                     }
                 }
