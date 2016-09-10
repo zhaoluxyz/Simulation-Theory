@@ -1,15 +1,24 @@
-﻿//CREATED BY JOSH
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Interact : MonoBehaviour {
 
-    public bool isInteracting;
-    public bool isHovering;
+    public bool isInteracting, isHovering, invalidProgression;
     string hoverText;
 
-	void Update ()
+    DateTime timedisplay;
+
+    Game gameProgression;
+    DialogueScript dialogueScript;
+
+    void Start()
+    {
+        gameProgression = GameObject.Find("Game").GetComponent<Game>();
+        dialogueScript = GameObject.Find("Game").GetComponent<DialogueScript>();
+    }
+
+    void Update ()
     {
         //raycast when E is pressed
         if (Input.GetKeyDown(KeyCode.E))
@@ -27,10 +36,31 @@ public class Interact : MonoBehaviour {
                     doorMove.open = !doorMove.open;
 					doorMove.PlaySound ();
                 }
+                else if (castHit.collider.CompareTag("NPC"))
+                {
+                    if(gameProgression.gameProgression == 1 && gameProgression.dialogueProgression == 1)
+                        dialogueScript.showDialogue = true;
+                    else
+                    {
+                        if (gameProgression.gameProgression == 2 && gameProgression.dialogueProgression == 2)
+                        {
+                            invalidProgression = true;
+                            hoverText = "You need to go and get the object which will allow me to help you!";
+                            timedisplay = DateTime.Now.AddSeconds(5);
+                        }
+
+                    }
+                }
             }
         }
 
-        //raycast to view kind of interaction
+        if (invalidProgression)
+        {
+            isHovering = false;
+            return;
+        }
+
+        //raycast to view text of interaction type
 
         Ray rayInteractHover = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         RaycastHit castHitHover;
@@ -48,19 +78,35 @@ public class Interact : MonoBehaviour {
                 isHovering = true;
             }
             else
-            {
                 isHovering = false;
-            }
         }
         else
-        {
             isHovering = false;
-        }
 
     }
 
     void OnGUI()
     {
+        //style for displayed text
+        GUIStyle labelStyle = new GUIStyle();
+        labelStyle.fontSize = 20;
+        labelStyle.normal.textColor = Color.white;
+        labelStyle.alignment = TextAnchor.MiddleCenter;
+        labelStyle.wordWrap = true;
+
+        //if you speak to someone when there is no new dialogue
+        if (invalidProgression)
+        {
+            if (timedisplay > DateTime.Now)
+            {
+                labelStyle.fontSize = 30;
+                GUI.Label(new Rect(Screen.width / 2 - 200, Screen.height / 2 - 100, 400, 200), hoverText, labelStyle);
+            }
+            else
+                invalidProgression = false;
+            return;
+        }
+
         //if you are currently interacting then disable the ability to interact
         if (isInteracting)
             return;
@@ -68,14 +114,9 @@ public class Interact : MonoBehaviour {
         //if the raycast is hovering over a object then display the corresponding text
         if (isHovering)
         {
-            GUIStyle labelStyle = new GUIStyle();
-            labelStyle.fontSize = (20);
-            labelStyle.normal.textColor = Color.white;
-            labelStyle.alignment = TextAnchor.MiddleCenter;
-            labelStyle.wordWrap = true;
-
-            GUI.Label(new Rect(Screen.width / 2 - 50, Screen.height / 2 - 25, 100, 50), hoverText, labelStyle);
+            GUI.Label(new Rect(Screen.width / 2 -75, Screen.height / 2 - 25, 150, 50), hoverText, labelStyle);
         }
+            
     }
 
 }
