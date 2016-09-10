@@ -15,10 +15,19 @@ public class MouseLook : MonoBehaviour {
 	}
 
 	public RotationAxis axis = RotationAxis.MouseX;
-	public float sensitivityX = 15, sensitivityY = 15;
+	public float sensitivityX = 10, sensitivityY = 10;
 	public float minimumX = -360, maximumX = 360;
-	public float minimumY = -60, maximumY = 60;
+	public float minimumY = -90, maximumY = 90;
 	float rotationY = 0;
+
+    Settings settings;
+
+    void Start()
+    {
+        settings = GameObject.Find("Game").GetComponent<Settings>();
+        sensitivityX = settings.mouseXSensitivity;
+        sensitivityY = settings.mouseYSensitivity;
+    }
 
 	void Update () 
 	{
@@ -30,12 +39,12 @@ public class MouseLook : MonoBehaviour {
 			rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
 
 			transform.localEulerAngles = new Vector3 (-rotationY, rotationX, 0);
-		}
+        }
         //horizontal look
-		else if(axis == RotationAxis.MouseX)
+        else if(axis == RotationAxis.MouseX)
 		{
 			transform.Rotate (0, Input.GetAxis ("Mouse X") * sensitivityX, 0);
-		}
+        }
         //vertical look
 		else
 		{
@@ -43,6 +52,6 @@ public class MouseLook : MonoBehaviour {
 			rotationY = Mathf.Clamp (rotationY, minimumY, maximumY);
 
 			transform.localEulerAngles = new Vector3 (-rotationY, transform.localEulerAngles.y, 0);
-		}
+        }
 	}
 }

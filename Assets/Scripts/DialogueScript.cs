@@ -13,6 +13,7 @@ public class DialogueScript : MonoBehaviour
     GUIStyle dialogueStyle;
 
     public bool showDialogue;
+    bool multipleOptions;
     int dialogueIndex = 0;
     float scrW = Screen.width / 16, scrH = Screen.height / 9, camFOV;
 
@@ -83,6 +84,10 @@ public class DialogueScript : MonoBehaviour
     {
         scrW = Screen.width / 16;
         scrH = Screen.height / 9;
+
+        if (showDialogue && !multipleOptions)
+            if (Input.GetKeyDown(KeyCode.Space))
+                dialogueIndex++;
     }
 	
 	void OnGUI()
@@ -125,6 +130,7 @@ public class DialogueScript : MonoBehaviour
 
                     if (GUI.Button(new Rect(14.8f * scrW, 5 * scrH, scrW, 0.5f * scrH), "Next"))
                     {
+                        multipleOptions = false;
                         dialogueIndex++;
                     }
 
@@ -137,7 +143,6 @@ public class DialogueScript : MonoBehaviour
                         playerLook.transform.rotation = Quaternion.Lerp(playerLook.transform.rotation, targetPlayerRot, 3f * Time.deltaTime);
                         camLook.transform.rotation = Quaternion.Lerp(camLook.transform.rotation, targetCameraRot, 3f * Time.deltaTime);
                         cam.fieldOfView = 30;
-                        
                     }
                 }
             }
@@ -164,6 +169,7 @@ public class DialogueScript : MonoBehaviour
 
                     if(dialogueIndex == 3)
                     {
+                        multipleOptions = true;
                         if (GUI.Button(new Rect(11.7f * scrW, 5 * scrH, 2f*scrW, 0.5f * scrH), "Short Version"))
                         {
                             dialogueIndex++;
@@ -175,6 +181,7 @@ public class DialogueScript : MonoBehaviour
                     }
                     else if(GUI.Button(new Rect(14.8f * scrW, 5 * scrH, scrW, 0.5f * scrH), "Next"))
                     {
+                        multipleOptions = false;
                         dialogueIndex++;
                     }
                 }
