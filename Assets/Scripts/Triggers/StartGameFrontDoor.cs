@@ -1,6 +1,4 @@
-﻿//CREATED BY JOSH
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class StartGameFrontDoor : MonoBehaviour {
