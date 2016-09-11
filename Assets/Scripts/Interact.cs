@@ -56,6 +56,11 @@ public class Interact : MonoBehaviour {
 
                     }
                 }
+                else if (castHit.collider.CompareTag("Keyboard"))
+                {
+                    Debug.Log("interact keyboard");
+                    castHit.transform.GetComponent<scptKeyboardStuff>().KeyboardPickedUp();
+                }
             }
         }
 
