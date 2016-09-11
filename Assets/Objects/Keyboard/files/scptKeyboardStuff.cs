@@ -34,28 +34,25 @@ public class scptKeyboardStuff : MonoBehaviour {
 		}
 
 		Debug.Log ("going up"); 
-		while (time < 6f)
+		while (time < 2f)
 		{
 			speed *= 2;
 			time += Time.deltaTime;
 			transform.Translate (increment * speed, Space.World);
 			yield return null; 
 		}
-			
-		Destroy (gameObject); 
-	}		
 
-	void Update()
-	{
-		if (Input.GetKeyDown (KeyCode.E)) {
-			Debug.Log ("picked up"); 
-			StartCoroutine (Pickup ());
-			/* Not needed because of using a Coroutine.
-			new Thread(() =>			
-				StartCoroutine(Pickup())
-			).Start();
-			*/
-			isPickedUp = true; 
-		}
-	}
+        Destroy(transform.parent.gameObject);
+        Destroy(gameObject);
+    }		
+
+    public void KeyboardPickedUp()
+    {
+        if (!isPickedUp)
+        {
+            Debug.Log("picked up");
+            isPickedUp = true;
+            StartCoroutine(Pickup());
+        }
+    }
 }
