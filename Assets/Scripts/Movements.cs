@@ -48,9 +48,13 @@ public class Movements : MonoBehaviour {
                 walkingSound.clip = Resources.Load("Foot Walking") as AudioClip;
 			}
 
-            if (!walkingSound.isPlaying && (Input.GetAxis("Horizontal") > 0 || (Input.GetAxis("Vertical") > 0)))
+            if (!walkingSound.isPlaying && (Input.GetAxis("Horizontal") != 0 || (Input.GetAxis("Vertical") != 0)))
             {
                 walkingSound.Play();
+            }
+            else if (walkingSound.isPlaying && (Input.GetAxis("Horizontal") == 0 && (Input.GetAxis("Vertical") == 0)))
+            {
+                walkingSound.Stop();
             }
 
 			moveDirection = new Vector3 (Input.GetAxis ("Horizontal"), 0, Input.GetAxis ("Vertical"));
